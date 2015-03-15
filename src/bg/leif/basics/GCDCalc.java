@@ -16,6 +16,12 @@ public class GCDCalc {
         this.n = n;
     }
 
+
+    /**
+     * Calculates the greatest common divisor using the Euclides' algorithm
+     *
+     * @return
+     */
     public int caclulateGCD(){
         int gcd = -1;
 
@@ -38,8 +44,9 @@ public class GCDCalc {
         }
     }
     /**
+     * Overloaded method to show that primitives are passed by value
      *
-     * passing primitives as method parameters won't switch them!
+     * passing primitives as method parameters won't switch their values!
      * pass-by-value for primitives
      * using this overloaded method will result in endless loop
      */
