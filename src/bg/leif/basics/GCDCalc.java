@@ -19,7 +19,6 @@ public class GCDCalc {
     public int caclulateGCD(){
 
         int gcd = -1;
-        int i = 0;
         switchNumbers();
 
         while(this.m != 0){
