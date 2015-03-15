@@ -17,7 +17,6 @@ public class GCDCalc {
     }
 
     public int caclulateGCD(){
-
         int gcd = -1;
 
         while(this.m != 0){
