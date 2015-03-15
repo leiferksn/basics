@@ -28,6 +28,9 @@ public class GCDCalc {
         return this.n;
     }
 
+    /**
+     * method switches values of integers
+     */
     private void switchNumbers(){
         if(this.m < this.n){
             int tmp = this.m;
@@ -36,6 +39,7 @@ public class GCDCalc {
         }
     }
     /**
+     *
      * passing primitives as method parameters won't switch them!
      * pass-by-value for primitives
      * using this overloaded method will result in endless loop
