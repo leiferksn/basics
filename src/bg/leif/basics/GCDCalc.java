@@ -19,7 +19,6 @@ public class GCDCalc {
     public int caclulateGCD(){
 
         int gcd = -1;
-        switchNumbers();
 
         while(this.m != 0){
             switchNumbers();
@@ -36,5 +35,16 @@ public class GCDCalc {
             this.n = tmp;
         }
     }
-
+    /**
+     * passing primitives as method parameters won't switch them!
+     * pass-by-value for primitives
+     * using this overloaded method will result in endless loop
+     */
+    private void switchNumbers(int m, int n){
+        if(m < n){
+            int tmp = m;
+            m = n;
+            n = tmp;
+        }
+    }
 }
