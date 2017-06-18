@@ -1,6 +1,6 @@
 package bg.leif.basics.exec;
 
-import bg.leif.basics.GCDCalc;
+import bg.leif.basics.gcd.GCDCalc;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,8 +13,11 @@ import java.io.InputStreamReader;
  */
 public class Exec {
 
-    public static void main(String[] args){
+    public void unionFind() {
+        // TODO implement the union find
+    }
 
+    public void calculateGreatestCommonDivisor() {
         int m, n;
         String line;
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
@@ -55,5 +58,15 @@ public class Exec {
         }
         */
         // GCDCalc gcdCalc = new GCDCalc(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+    }
+
+    public static void main(String[] args){
+        String whatToDo = (String) args[0];
+        Exec exec = new Exec();
+
+        if(whatToDo.equals("gcd")) {
+            exec.calculateGreatestCommonDivisor();
+        }
+
     }
 }

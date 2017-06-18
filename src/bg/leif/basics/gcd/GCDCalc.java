@@ -1,4 +1,4 @@
-package bg.leif.basics;
+package bg.leif.basics.gcd;
 
 /**
  * Created by leif on 15/03/15.
