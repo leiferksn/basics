@@ -1,6 +1,9 @@
 package bg.leif.basics.exec;
 
+import bg.leif.basics.unionfind.QuickFind;
 import bg.leif.basics.gcd.GCDCalc;
+import bg.leif.basics.unionfind.QuickUnion;
+import bg.leif.basics.unionfind.UnionFind;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,8 +16,30 @@ import java.io.InputStreamReader;
  */
 public class Exec {
 
-    public void unionFind() {
-        // TODO implement the union find
+    public void unionFind(boolean lazy, int numberOfElements) {
+        UnionFind uf;
+        if(lazy) {
+            uf = new QuickUnion(numberOfElements);
+        } else {
+            uf = new QuickFind(numberOfElements);
+        }
+        if (!uf.connected(9,7)) {
+            uf.union(9,7);
+        };
+
+        uf.outputElements();
+
+        if (!uf.connected(8,1)) {
+            uf.union(8,1);
+        };
+
+        uf.outputElements();
+
+        if (!uf.connected(9,8)) {
+            uf.union(9,1);
+        };
+
+        uf.outputElements();
     }
 
     public void calculateGreatestCommonDivisor() {
@@ -61,11 +86,23 @@ public class Exec {
     }
 
     public static void main(String[] args){
+        if (args.length <= 1) {
+            return;
+        }
+
         String whatToDo = (String) args[0];
         Exec exec = new Exec();
 
         if(whatToDo.equals("gcd")) {
             exec.calculateGreatestCommonDivisor();
+        }
+
+        if(whatToDo.equals("uf")) {
+            if (args.length == 3) {
+                boolean lazy = ((String)args[1]).equals("1") ? true : false;
+                int numberOfElements = (int)Integer.parseInt(args[2]);
+                exec.unionFind(lazy, numberOfElements);
+            }
         }
 
     }
