@@ -2,6 +2,7 @@ package bg.leif.basics.exec;
 
 import bg.leif.basics.queue.QueueOfStrings;
 import bg.leif.basics.gcd.GCDCalc;
+import bg.leif.basics.queue.QueueOfStringsARR;
 import bg.leif.basics.stack.StackOfStrings;
 import bg.leif.basics.stack.StackOfStringsARR;
 import bg.leif.basics.stack.StackOfStringsLL;
@@ -159,6 +160,9 @@ public class Exec {
             switch (typeOfQueue) {
                 case "ll":
                     qos = new QueueOfStringsLL();
+                    break;
+                case "arr":
+                    qos = new QueueOfStringsARR();
                     break;
                 default:
                     qos = new QueueOfStringsLL();
