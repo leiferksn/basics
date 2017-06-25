@@ -1,13 +1,14 @@
 package bg.leif.basics.exec;
 
-import bg.leif.basics.unionfind.QuickFind;
 import bg.leif.basics.gcd.GCDCalc;
+import bg.leif.basics.stack.StackOfStrings;
+import bg.leif.basics.stack.StackOfStringsARR;
+import bg.leif.basics.stack.StackOfStringsLL;
+import bg.leif.basics.unionfind.QuickFind;
 import bg.leif.basics.unionfind.QuickUnion;
 import bg.leif.basics.unionfind.UnionFind;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * The class executes calculations. It works only with integers +/- 2^31
@@ -40,6 +41,17 @@ public class Exec {
         };
 
         uf.outputElements();
+    }
+
+    public static String readFromFile(String pathToFile) throws IOException {
+        StringBuffer sb = new StringBuffer();
+        BufferedReader reader = new BufferedReader(new FileReader(new File(pathToFile)));
+        String line = null;
+        while((line = reader.readLine()) != null) {
+            sb.append(line);
+            sb.append(",");
+        }
+        return sb.toString();
     }
 
     public void calculateGreatestCommonDivisor() {
@@ -105,5 +117,39 @@ public class Exec {
             }
         }
 
+        if(whatToDo.equals("stack")) {
+            String typeOfStack = (String)args[1];
+            StackOfStrings sos = null;
+            switch (typeOfStack) {
+                case "ll" :
+                    sos = new StackOfStringsLL();
+                    break;
+                case "arr":
+                    sos = new StackOfStringsARR();
+                    break;
+                default:
+                    sos = new StackOfStringsLL();
+            }
+
+            String pathToInputFile = (String)args[2];
+            String[] testStrings = null;
+            try {
+                testStrings = readFromFile(pathToInputFile).split(",");
+
+            } catch (IOException ioe) {
+                System.out.println("Can't read from file: " + pathToInputFile);
+                System.exit(0);
+            }
+
+            for (String s : testStrings) {
+                if (s.contains("-")) {
+                    sos.pop();
+                } else {
+                    sos.push(s);
+                }
+
+                System.out.println("Empty? " + sos.isEmpty() + " " + sos.toString());
+            }
+        }
     }
 }
